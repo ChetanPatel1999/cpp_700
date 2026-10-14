@@ -7,6 +7,7 @@ public:
     int price;
     float rating;
     string color;
+    
 };
 int main()
 {
