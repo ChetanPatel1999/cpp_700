@@ -13,12 +13,21 @@ public:
         rno = r;
         per = p;
     }
+
     void getStudent() // getter method
     {
         cout << "student info : " << endl;
         cout << "name = " << name << endl;
         cout << "rno = " << rno << endl;
         cout << "per = " << per << endl;
+        if (per >= 33)
+        {
+            cout << "student pass " << endl;
+        }
+        else
+        {
+            cout << "student Fail " << endl;
+        }
         cout << "-------------------------" << endl;
     }
 };
@@ -28,9 +37,9 @@ int main()
 
     s1.setStudent("ram", 101, 45.67);
 
-    s2.setStudent("shyam", 102, 80.67);
+    s2.setStudent("shyam", 102, 12.67);
 
-    s3.setStudent("sarvagya", 103, 90.67);
+    s3.setStudent("sarvagya", 103, 5.67);
 
     s4.setStudent("sandeep", 104, 67.89);
 
