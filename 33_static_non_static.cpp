@@ -45,17 +45,22 @@ public:
         cout << "-------------------------" << endl;
     }
 
-    void getTotalResult()
+    static void getTotalResult()
     {
         cout << "total Result :" << endl;
         cout << "total pass = " << totalPass << endl;
         cout << "total fail = " << totalFail << endl;
         cout << "--------------------------------" << endl;
     }
-    void getTotalStudent()
+    static void getTotalStudent()
     {
         cout << "total student = " << totalstd << endl;
         cout << "--------------------------------" << endl;
+    }
+    static void classInfo()
+    {
+        cout << "its provide class info" << endl;
+        
     }
 };
 int student::totalPass = 0;
@@ -79,7 +84,9 @@ int main()
     s3.getResultCard();
     s4.getResultCard();
 
-    s1.getTotalResult();
-    s1.getTotalStudent();
+    student::getTotalResult();
+    student::getTotalStudent();
+
+    student::classInfo();
     return 0;
 }
