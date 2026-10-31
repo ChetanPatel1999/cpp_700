@@ -19,9 +19,11 @@ public:
         cin >> ac[index].acno;
         cout << "enter your balance  : ";
         cin >> ac[index].balance;
+        totalBankBalance = totalBankBalance + ac[index].balance;
+        totalAccount++;
         cout << "\nyour account create succefully !\n\n";
     }
-    static void displayAccount(account ac[], int index)
+    static void displayAccount(account ac[], int index) // 4
     {
         int i;
         if (index > 0)
@@ -33,6 +35,125 @@ public:
                 cout << "account account no : " << ac[i].acno << endl;
                 cout << "account balance : " << ac[i].balance << endl;
                 cout << "----------------------------\n";
+            }
+        }
+        else
+        {
+            cout << "\nNo one account is created\n\n";
+        }
+    }
+
+    static void displaySingleAccount(account ac[], int index)
+    {
+        int i;
+        if (index > 0)
+        {
+            string ac_no;
+            cout << "\nEnter your account number = ";
+            cin >> ac_no;
+            int match = 0;
+            for (i = 0; i < index; i++) // 2
+            {
+                if (ac[i].acno == ac_no)
+                {
+                    cout << "\nAccount " << i + 1 << " info : " << endl;
+                    cout << "account name : " << ac[i].ac_name << endl;
+                    cout << "account account no : " << ac[i].acno << endl;
+                    cout << "account balance : " << ac[i].balance << endl;
+                    cout << "----------------------------\n";
+                    match = 1;
+                }
+            }
+            if (match == 0)
+            {
+                cout << "\naccount number is invalid\n\n";
+            }
+        }
+        else
+        {
+            cout << "\nNo one account is created\n\n";
+        }
+    }
+    static void getTotalBankBalance()
+    {
+        cout << "\nTotal Bank Balance \n";
+        cout << "--------------------------\n";
+        cout << "  " << totalBankBalance << endl;
+        cout << "--------------------------\n\n";
+    }
+    static void getTotalAccount()
+    {
+        cout << "\nTotal Accounts \n";
+        cout << "--------------------------\n";
+        cout << "  " << totalAccount << endl;
+        cout << "--------------------------\n\n";
+    }
+
+    static void deposite(account ac[], int index)
+    {
+        int i;
+        if (index > 0)
+        {
+            string ac_no;
+            cout << "\nEnter your account number = ";
+            cin >> ac_no;
+            int match = 0;
+            for (i = 0; i < index; i++) // 2
+            {
+                if (ac[i].acno == ac_no)
+                {
+                    int amount;
+                    cout << "enter amount : ";
+                    cin >> amount;
+                    ac[i].balance = ac[i].balance + amount;
+                    totalBankBalance = totalBankBalance + amount;
+                    cout << "\n amount deposite succefully in " << ac[i].ac_name << " account" << "\n\n";
+                    match = 1;
+                }
+            }
+            if (match == 0)
+            {
+                cout << "\naccount number is invalid\n\n";
+            }
+        }
+        else
+        {
+            cout << "\nNo one account is created\n\n";
+        }
+    }
+
+    static void withdraw(account ac[], int index)
+    {
+        int i;
+        if (index > 0)
+        {
+            string ac_no;
+            cout << "\nEnter your account number = ";
+            cin >> ac_no;
+            int match = 0;
+            for (i = 0; i < index; i++) // 2
+            {
+                if (ac[i].acno == ac_no)
+                {
+                    int amount;
+                    cout << "enter amount : ";
+                    cin >> amount;
+                    if (amount < ac[i].balance)
+                    {
+                        ac[i].balance = ac[i].balance - amount;
+                        totalBankBalance = totalBankBalance - amount;
+                        cout << "\n amount withdraw succefully in " << ac[i].ac_name << " account" << "\n\n";
+                    }
+                    else
+                    {
+                        cout << "\n not sufficiant balance in " << ac[i].ac_name << " account" << "\n\n";
+                    }
+                    match = 1;
+                }
+            }
+            if (match == 0)
+            {
+                cout << "\naccount number is invalid\n\n";
             }
         }
         else
@@ -65,25 +186,25 @@ int main()
         {
         case 1:
             account::createAccount(ac, index);
-            index++; // 4
+            index++; // 2
             break;
         case 2:
             account::displayAccount(ac, index); // 4
             break;
         case 3:
-            // to diplay single account
+            account::displaySingleAccount(ac, index); // 4
             break;
         case 4:
-            // to diposite amount
+            account::deposite(ac, index); // 4
             break;
         case 5:
-            // to withdraw amount
+            account::withdraw(ac, index);
             break;
         case 6:
-            // to display total bank balance
+            account::getTotalBankBalance();
             break;
         case 7:
-            // to total account
+            account::getTotalAccount();
             break;
         case 8:
             exit(0);
